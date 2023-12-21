@@ -94,7 +94,7 @@ yarn dev
 
 
 ## Get support
-If you found a bug or want to suggest a new [feature/use case/sample], please [file an issue](./issues).
+If you found a bug or want to suggest a new [feature/use case/sample], please [file an issue](../../issues).
 
 If you have questions, comments, or need help with code, we're here to help:
 - on [Discord](https://discord.com/invite/t7x7hwkJF4)
