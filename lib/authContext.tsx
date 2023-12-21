@@ -1,9 +1,6 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import { getAuth, onAuthStateChanged, signOut as signout } from "firebase/auth";
 import { setCookie, destroyCookie } from "nookies";
-import Openfort from "@openfort/openfort-js";
-
-const openfort = new Openfort(process.env.NEXT_PUBLIC_OPENFORT_PUBLIC_KEY!);
 
 export type TIdTokenResult = {
   token: string;
@@ -69,10 +66,5 @@ export const useAuth = () => useContext(authContext);
 export const signOut = async () => {
   const auth = getAuth();
   destroyCookie(null, "idToken");
-  try {
-    await openfort.removeSessionKey();
-  } catch (error) {
-    console.error("Failed to remove session key:", error);
-  }
   await signout(auth);
 };

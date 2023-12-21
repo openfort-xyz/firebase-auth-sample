@@ -63,13 +63,6 @@ const Home: NextPage = () => {
         await openfortAuth.authorizeWithOAuthToken("firebase", idToken);
         // The signed-in user info.
         const user = result.user;
-        await fetch("/api/examples/protected-user", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        });
 
         console.log("sign with google", user);
         // ...

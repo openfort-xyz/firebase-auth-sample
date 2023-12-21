@@ -1,7 +1,4 @@
 import * as React from "react";
-import Openfort from "@openfort/openfort-js";
-
-const openfort = new Openfort(process.env.NEXT_PUBLIC_OPENFORT_PUBLIC_KEY!);
 
 export function CollectButton() {
   const [collectLoading, setCollectLoading] = React.useState(false);
