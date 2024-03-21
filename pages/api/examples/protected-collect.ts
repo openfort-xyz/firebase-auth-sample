@@ -13,7 +13,7 @@ export default async function handler(
 ) {
   const { idToken } = nookies.get({ req });
   var fbInfo = await adminInit.auth().verifyIdToken(idToken);
-  const authResult  =await openfort.oauth.verifyToken({provider:"firebase", token: idToken})
+  const authResult  =await openfort.iam.verifyOAuthToken({provider:"firebase", token: idToken, tokenType: "idToken"})
 
   if (fbInfo && authResult) {
       const playerId = authResult.id;

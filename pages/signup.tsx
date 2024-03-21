@@ -9,11 +9,9 @@ import {
 import { useState } from "react";
 import { useAuth } from "../lib/authContext";
 import Link from "next/link";
-import { OpenfortAuth } from "@openfort/openfort-js";
+import Openfort from "@openfort/openfort-js";
 
-const openfortAuth = new OpenfortAuth(
-  process.env.NEXT_PUBLIC_OPENFORT_PUBLIC_KEY!
-);
+const openfort = new Openfort(process.env.NEXT_PUBLIC_OPENFORT_PUBLIC_KEY!);
 
 const Home: NextPage = () => {
   const { user, loading } = useAuth();
@@ -40,7 +38,7 @@ const Home: NextPage = () => {
         // Signed in
         const user = userCredential.user;
         const idToken = await userCredential.user.getIdToken();
-        await openfortAuth.authorizeWithOAuthToken("firebase", idToken);
+        await openfort.authenticateWithOAuth("firebase", idToken, "idToken");
         console.log("success", user);
       })
       .catch((error) => {
@@ -60,7 +58,7 @@ const Home: NextPage = () => {
         // This gives you a Google Access Token. You can use it to access the Google API.
 
         const idToken = await result.user.getIdToken();
-        await openfortAuth.authorizeWithOAuthToken("firebase", idToken);
+        await openfort.authenticateWithOAuth("firebase", idToken, "idToken");
         // The signed-in user info.
         const user = result.user;
 
